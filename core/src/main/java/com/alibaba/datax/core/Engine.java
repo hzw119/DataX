@@ -198,6 +198,8 @@ public class Engine {
     public static void main(String[] args) throws Exception {
         int exitCode = 0;
         try {
+//            String[] params = {"-mode", "standalone", "-jobid", "-1", "-job", "E:/huangzw/DataX/target/datax/datax/job/job1.json"};
+//            System.setProperty("datax.home", "E:/huangzw/DataX/target/datax/datax");
             Engine.entry(args);
         } catch (Throwable e) {
             exitCode = 1;

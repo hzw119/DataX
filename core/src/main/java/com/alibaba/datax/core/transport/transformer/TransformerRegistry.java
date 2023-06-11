@@ -34,6 +34,7 @@ public class TransformerRegistry {
         registTransformer(new SubstrTransformer());
         registTransformer(new PadTransformer());
         registTransformer(new ReplaceTransformer());
+        registTransformer(new ReplaceAllTransformer());
         registTransformer(new FilterTransformer());
         registTransformer(new GroovyTransformer());
         registTransformer(new DigestTransformer());

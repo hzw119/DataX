@@ -1,0 +1,84 @@
+{
+	"job": {
+		"content": [
+			{
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"username": "root",
+						"password": "123456",
+						"connection": [
+							{
+								"querySql": [
+									"select id,name,text from student;"
+								],
+								"jdbcUrl": [
+									"jdbc:mysql://localhost:3306/test"
+								]
+							}
+						]
+					}
+				},
+				"transformer": [
+					{
+						"name": "dx_replace_all",
+						"parameter": {
+							"columnIndex": -1,
+							"paras":["\n","\\n"]
+						}
+					},
+					{
+						"name": "dx_replace_all",
+						"parameter": {
+							"columnIndex": -1,
+							"paras":["\n\r","\\n"]
+						}
+					},
+					{
+						"name": "dx_replace_all",
+						"parameter": {
+							"columnIndex": -1,
+							"paras":["|",","]
+						}
+					},
+					{
+						"name": "dx_replace_all",
+						"parameter": {
+							"columnIndex": -1,
+							"paras":["\t",","]
+						}
+					}
+				],
+				"writer": {
+					"name": "mysqlwriter",
+					"parameter": {
+						"writeMode": "insert",
+						"username": "root",
+						"password": "123456",
+						"column": [
+							"id",
+							"name",
+							"text"
+						],
+						"preSql": [
+							"delete from test"
+						],
+						"connection": [
+							{
+								"jdbcUrl": "jdbc:mysql://localhost:3306/datax",
+								"table": [
+									"test"
+								]
+							}
+						]
+					}
+				}
+			}
+		],
+		"setting": {
+			"speed": {
+				"channel": "1"
+			}
+		}
+	}
+}
